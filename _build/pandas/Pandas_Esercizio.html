@@ -1,0 +1,2877 @@
+---
+redirect_from:
+  - "pandas/pandas-esercizio"
+interact_link: content/pandas/Pandas_Esercizio.ipynb
+kernel_name: python3
+kernel_path: content/pandas
+has_widgets: false
+title: |-
+  Pandas Esercizio
+pagenum: 0
+prev_page:
+  url: 
+next_page:
+  url: /pandas/Pandas_Esercizio_Soluzione.html
+suffix: .ipynb
+search: matplotlib pandas contagiati provincia dpc covid nostra regione plot org html com landamento dei nel tempo con api colab master dati della emilia romagna di alla visualization raw githubusercontent pcm ita csv propria una parte research google data province regioni andamento nazionale plottare comparare delle prime provincie quelli appartenente sempre creare un grafico torta le percentuali per ogni apparente reference pydata docs stable dataframe plotly href github visiontlab blob courses pandasesercizio ipynb target parentimg src assets badge svg alt open riassunto libreria esercizio descrizione datasets datiprovince datiregioni datiitalia obbiettivo utilizzando provinciali analizzare nella based customization userguide refrence style gallery stylesheets
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Pandas Esercizio</div>
+</div>
+    
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://colab.research.google.com/github/visiont3lab/data-visualization/blob/master/courses/02_Pandas/Pandas_Esercizio.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Riassunto-Libreria-Pandas">Riassunto Libreria Pandas<a class="anchor-link" href="#Riassunto-Libreria-Pandas"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># importare libreria pandas con nome pd</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Creare dataframe (usando struttura dizionario chiave-valore)</span>
+<span class="n">content</span> <span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;Nome&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Manuel&quot;</span><span class="p">,</span> <span class="s2">&quot;Giada&quot;</span><span class="p">,</span> <span class="s2">&quot;Marco&quot;</span><span class="p">,</span> <span class="s2">&quot;Manuel&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Età&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;26&quot;</span><span class="p">,</span> <span class="s2">&quot;25&quot;</span><span class="p">,</span> <span class="s2">&quot;28&quot;</span><span class="p">,</span> <span class="s2">&quot;29&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Sesso&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Stipendio&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2050</span><span class="p">,</span><span class="mi">1900</span><span class="p">,</span><span class="mi">2100</span><span class="p">,</span><span class="mi">2300</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+<span class="c1"># Ê possibile specificare anche gli indici in modo che siano diversi da 0,1,2 --N</span>
+<span class="c1">#df = pd.DataFrame(content, index=[&quot;n1&quot;,&quot;n2&quot;,&quot;n3&quot;,&quot;n4&quot;])</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Elencare informazioni</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Elencare informazioni statistiche utili</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Età&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Età&quot;</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Elencare nome colonne</span>
+<span class="n">df</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Dimensione tabella (righe,colonne)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">col</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Ottenere prime  3 e ultime 3 righe della tabella</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># prime 3</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># ultime 3</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Seleziona colonna Nome e Sesso</span>
+<span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Nome&quot;</span><span class="p">,</span><span class="s2">&quot;Sesso&quot;</span><span class="p">]]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Seleziona colonna Nome e Sesso parole unique</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Nome&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Sesso&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Seleziona riga con indice 2 (qua si guarda agli indici)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Seleziona riga numero 2 (si parte a contare da 0)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="c1"># Seleziona riga numero 2,3 (si parte a contare da 0)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
+<span class="c1"># Seleziona riga da 1 a 3 </span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Della colonna Nome e Sesso selezionare le righe  1 e 3</span>
+<span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Nome&quot;</span><span class="p">,</span><span class="s2">&quot;Sesso&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Della colonna Nome e Sesso selezionare le righe da 1 a 3</span>
+<span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Nome&quot;</span><span class="p">,</span><span class="s2">&quot;Sesso&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="c1"># se vogliamo anche il 3 compreso dobbiamo arrivare a 4</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Seleziona tutte righe dove la colonna Sesso è uguale a F</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Sesso&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;F&quot;</span><span class="p">])</span>
+<span class="c1"># Seleziona l&#39;indice della prima riga dove la colonna Sesso è uguale a F</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Sesso&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;F&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Seleziona tutte le righe dove la colonna età è &gt; 26</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Età&quot;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">26</span><span class="p">]</span> <span class="c1"># Attenzione &quot;26&quot; è una stringa</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Seleziona tutte le righe dove la colonna età è &gt; 26</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Età&quot;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">26</span><span class="p">]</span> <span class="c1"># Attenzione 26 è un numero adesso</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot </span>
+<span class="c1">#df.plot(kind=&quot;bar&quot;,stacked=True,figsize=(18,8)) # Grafico uno sopra l&#39;latro</span>
+<span class="c1">#df.plot(kind=&quot;bar&quot;,stacked=False,figsize=(18,8)) # Grafico a bar uno di fianco all&#39;altro</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span> <span class="c1"># Grafico a bar uno di fianco all&#39;altro</span>
+<span class="c1">#df.set_index(&quot;Sesso&quot;).plot(kind=&quot;line&quot;,y=[&quot;Età&quot;])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Salvare dataframe come csv</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;nome.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span> <span class="c1"># specificare se si vuole o no salvare l&#39;indice</span>
+<span class="c1"># Consiglio alcune volte è meglio usare ; come separatore. Vecchi excel funzionano meglio.</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Leggere csv file e convertirlo in dataframe</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;nome.csv&#39;</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Salvare dataframe su excel</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;nome.xlsx&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Leggere excel file e convertirlo in dataframe</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;nome.xlsx&#39;</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Ordinare tabella specificando una colonna e l&#39;ordine crescente/decrescente</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Età&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># crescente</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Età&quot;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># decrescente</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Resettare l&#39;ordine degli indici</span>
+<span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Aggiungere una colonna alla fine</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Nuova Colonna&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">]</span> <span class="c1"># numero di elementi = numero di righe</span>
+<span class="c1"># Aggiungere una colonna in una precisa posizione</span>
+<span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Nuova Colonna 2&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;aa&quot;</span><span class="p">,</span><span class="s2">&quot;bb&quot;</span><span class="p">,</span><span class="s2">&quot;cc&quot;</span><span class="p">,</span><span class="s2">&quot;dd&quot;</span><span class="p">])</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Rimuovere una colonna usando i nomi delle colonne</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Nuova Colonna 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Nuova Colonna&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Rimuovere righe 0 e 2 in base agli indici</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Operazioni con stringhe: replace (sostituire)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Nome&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="c1">#df[&quot;Nome&quot;] = df[&quot;Nome&quot;].str.replace(&quot;e&quot;,&quot;,&quot;) # assegnamento</span>
+<span class="c1">#df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Operazione con stringhe: contains (contine)</span>
+<span class="c1"># Nella colonna Nome e Sesso trova tutti i valori con  le lettere F o M mauscole</span>
+<span class="c1">#df[df[&quot;Nome&quot;].str.contains(&quot;F|M&quot;) | df[&quot;Sesso&quot;].str.contains(&quot;M&quot;)]</span>
+<span class="c1"># Nella colonna Nome e Sesso trova tutti i valori con  le lettere G e F mauscole</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Nome&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;G&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Sesso&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;F&quot;</span><span class="p">)]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Esercizio">Esercizio<a class="anchor-link" href="#Esercizio"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Descrizione">Descrizione<a class="anchor-link" href="#Descrizione"> </a></h3><p>Datasets:</p>
+<ul>
+<li>dati_province = "<a href="https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv">https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv</a>"</li>
+<li>dati_regioni = "<a href="https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv">https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv</a>"</li>
+<li>dati_italia = "<a href="https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv">https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv</a>"</li>
+</ul>
+<p>Obbiettivo: Utilizzando i dati provinciali analizzare l'andamento dei contagiati nella propria provincia nel tempo.</p>
+<ol>
+<li>Plottare l'andamento nel tempo dei contagiati della propria provincia. </li>
+<li>Comparare l'andamento nel tempo dei contagiati delle prime 3 provincie della nostra regione (Emilia-Romagna) con quelli  di una provincia appartenente sempre alla nostra regione.</li>
+<li>Creare un grafico a torta con le percentuali di contagiati per ogni provincia apparente alla nostra regione (Emilia-Romagna) </li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Parte-1.-Plottare-l'andamento-nel-tempo-dei-contagiati-della-propria-provincia.">Parte 1. Plottare l'andamento nel tempo dei contagiati della propria provincia.<a class="anchor-link" href="#Parte-1.-Plottare-l'andamento-nel-tempo-dei-contagiati-della-propria-provincia."> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># Leggiamo i dati</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+      <th>stato</th>
+      <th>codice_regione</th>
+      <th>denominazione_regione</th>
+      <th>codice_provincia</th>
+      <th>denominazione_provincia</th>
+      <th>sigla_provincia</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>totale_casi</th>
+      <th>note_it</th>
+      <th>note_en</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2020-02-24T18:00:00</td>
+      <td>ITA</td>
+      <td>13</td>
+      <td>Abruzzo</td>
+      <td>69</td>
+      <td>Chieti</td>
+      <td>CH</td>
+      <td>42.351032</td>
+      <td>14.167546</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2020-02-24T18:00:00</td>
+      <td>ITA</td>
+      <td>13</td>
+      <td>Abruzzo</td>
+      <td>66</td>
+      <td>L'Aquila</td>
+      <td>AQ</td>
+      <td>42.351222</td>
+      <td>13.398438</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2020-02-24T18:00:00</td>
+      <td>ITA</td>
+      <td>13</td>
+      <td>Abruzzo</td>
+      <td>68</td>
+      <td>Pescara</td>
+      <td>PE</td>
+      <td>42.464584</td>
+      <td>14.213648</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2020-02-24T18:00:00</td>
+      <td>ITA</td>
+      <td>13</td>
+      <td>Abruzzo</td>
+      <td>67</td>
+      <td>Teramo</td>
+      <td>TE</td>
+      <td>42.658918</td>
+      <td>13.704400</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2020-02-24T18:00:00</td>
+      <td>ITA</td>
+      <td>13</td>
+      <td>Abruzzo</td>
+      <td>979</td>
+      <td>In fase di definizione/aggiornamento</td>
+      <td>NaN</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>5883</th>
+      <td>2020-04-09T17:00:00</td>
+      <td>ITA</td>
+      <td>5</td>
+      <td>Veneto</td>
+      <td>26</td>
+      <td>Treviso</td>
+      <td>TV</td>
+      <td>45.667546</td>
+      <td>12.245074</td>
+      <td>1906</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5884</th>
+      <td>2020-04-09T17:00:00</td>
+      <td>ITA</td>
+      <td>5</td>
+      <td>Veneto</td>
+      <td>27</td>
+      <td>Venezia</td>
+      <td>VE</td>
+      <td>45.434905</td>
+      <td>12.338452</td>
+      <td>1751</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5885</th>
+      <td>2020-04-09T17:00:00</td>
+      <td>ITA</td>
+      <td>5</td>
+      <td>Veneto</td>
+      <td>23</td>
+      <td>Verona</td>
+      <td>VR</td>
+      <td>45.438390</td>
+      <td>10.993527</td>
+      <td>3049</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5886</th>
+      <td>2020-04-09T17:00:00</td>
+      <td>ITA</td>
+      <td>5</td>
+      <td>Veneto</td>
+      <td>24</td>
+      <td>Vicenza</td>
+      <td>VI</td>
+      <td>45.547497</td>
+      <td>11.545971</td>
+      <td>1885</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5887</th>
+      <td>2020-04-09T17:00:00</td>
+      <td>ITA</td>
+      <td>5</td>
+      <td>Veneto</td>
+      <td>999</td>
+      <td>In fase di definizione/aggiornamento</td>
+      <td>NaN</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>339</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5888 rows × 12 columns</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 5888 entries, 0 to 5887
+Data columns (total 12 columns):
+ #   Column                   Non-Null Count  Dtype  
+---  ------                   --------------  -----  
+ 0   data                     5888 non-null   object 
+ 1   stato                    5888 non-null   object 
+ 2   codice_regione           5888 non-null   int64  
+ 3   denominazione_regione    5888 non-null   object 
+ 4   codice_provincia         5888 non-null   int64  
+ 5   denominazione_provincia  5888 non-null   object 
+ 6   sigla_provincia          4876 non-null   object 
+ 7   lat                      5888 non-null   float64
+ 8   long                     5888 non-null   float64
+ 9   totale_casi              5888 non-null   int64  
+ 10  note_it                  4 non-null      object 
+ 11  note_en                  4 non-null      object 
+dtypes: float64(2), int64(3), object(7)
+memory usage: 552.1+ KB
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Estrarre i nomi delle regioni</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_regione&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="c1">#list(df[&quot;denominazione_regione&quot;].unique())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([&#39;Abruzzo&#39;, &#39;Basilicata&#39;, &#39;P.A. Bolzano&#39;, &#39;Calabria&#39;, &#39;Campania&#39;,
+       &#39;Emilia-Romagna&#39;, &#39;Friuli Venezia Giulia&#39;, &#39;Lazio&#39;, &#39;Liguria&#39;,
+       &#39;Lombardia&#39;, &#39;Marche&#39;, &#39;Molise&#39;, &#39;Piemonte&#39;, &#39;Puglia&#39;, &#39;Sardegna&#39;,
+       &#39;Sicilia&#39;, &#39;Toscana&#39;, &#39;P.A. Trento&#39;, &#39;Umbria&#39;, &#34;Valle d&#39;Aosta&#34;,
+       &#39;Veneto&#39;], dtype=object)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Estrarre i nomi delle provincie e manipolazione liste</span>
+<span class="n">mylist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
+<span class="n">el</span> <span class="o">=</span> <span class="s2">&quot;In fase di definizione/aggiornamento&quot;</span>	
+<span class="k">if</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">mylist</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Yes: e l&#39;indice `e&quot;</span><span class="p">,</span> <span class="n">mylist</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">el</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;Chieti&#39;, &#34;L&#39;Aquila&#34;, &#39;Pescara&#39;, &#39;Teramo&#39;, &#39;In fase di definizione/aggiornamento&#39;, &#39;Matera&#39;, &#39;Potenza&#39;, &#39;Bolzano&#39;, &#39;Catanzaro&#39;, &#39;Cosenza&#39;, &#39;Crotone&#39;, &#39;Reggio di Calabria&#39;, &#39;Vibo Valentia&#39;, &#39;Avellino&#39;, &#39;Benevento&#39;, &#39;Caserta&#39;, &#39;Napoli&#39;, &#39;Salerno&#39;, &#39;Bologna&#39;, &#39;Ferrara&#39;, &#39;Forlì-Cesena&#39;, &#39;Modena&#39;, &#39;Parma&#39;, &#39;Piacenza&#39;, &#39;Ravenna&#39;, &#34;Reggio nell&#39;Emilia&#34;, &#39;Rimini&#39;, &#39;Gorizia&#39;, &#39;Pordenone&#39;, &#39;Trieste&#39;, &#39;Udine&#39;, &#39;Frosinone&#39;, &#39;Latina&#39;, &#39;Rieti&#39;, &#39;Roma&#39;, &#39;Viterbo&#39;, &#39;Genova&#39;, &#39;Imperia&#39;, &#39;La Spezia&#39;, &#39;Savona&#39;, &#39;Bergamo&#39;, &#39;Brescia&#39;, &#39;Como&#39;, &#39;Cremona&#39;, &#39;Lecco&#39;, &#39;Lodi&#39;, &#39;Mantova&#39;, &#39;Milano&#39;, &#39;Monza e della Brianza&#39;, &#39;Pavia&#39;, &#39;Sondrio&#39;, &#39;Varese&#39;, &#39;Ancona&#39;, &#39;Ascoli Piceno&#39;, &#39;Fermo&#39;, &#39;Macerata&#39;, &#39;Pesaro e Urbino&#39;, &#39;Campobasso&#39;, &#39;Isernia&#39;, &#39;Alessandria&#39;, &#39;Asti&#39;, &#39;Biella&#39;, &#39;Cuneo&#39;, &#39;Novara&#39;, &#39;Torino&#39;, &#39;Verbano-Cusio-Ossola&#39;, &#39;Vercelli&#39;, &#39;Bari&#39;, &#39;Barletta-Andria-Trani&#39;, &#39;Brindisi&#39;, &#39;Foggia&#39;, &#39;Lecce&#39;, &#39;Taranto&#39;, &#39;Cagliari&#39;, &#39;Nuoro&#39;, &#39;Oristano&#39;, &#39;Sassari&#39;, &#39;Sud Sardegna&#39;, &#39;Agrigento&#39;, &#39;Caltanissetta&#39;, &#39;Catania&#39;, &#39;Enna&#39;, &#39;Messina&#39;, &#39;Palermo&#39;, &#39;Ragusa&#39;, &#39;Siracusa&#39;, &#39;Trapani&#39;, &#39;Arezzo&#39;, &#39;Firenze&#39;, &#39;Grosseto&#39;, &#39;Livorno&#39;, &#39;Lucca&#39;, &#39;Massa Carrara&#39;, &#39;Pisa&#39;, &#39;Pistoia&#39;, &#39;Prato&#39;, &#39;Siena&#39;, &#39;Trento&#39;, &#39;Perugia&#39;, &#39;Terni&#39;, &#39;Aosta&#39;, &#39;Belluno&#39;, &#39;Padova&#39;, &#39;Rovigo&#39;, &#39;Treviso&#39;, &#39;Venezia&#39;, &#39;Verona&#39;, &#39;Vicenza&#39;]
+Yes: e l&#39;indice `e 4
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Estrarre le provincie in Emilia Romagna</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_regione&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;Emilia-Romagna&quot;</span><span class="p">][</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([&#39;Bologna&#39;, &#39;Ferrara&#39;, &#39;Forlì-Cesena&#39;, &#39;Modena&#39;, &#39;Parma&#39;,
+       &#39;Piacenza&#39;, &#39;Ravenna&#39;, &#34;Reggio nell&#39;Emilia&#34;, &#39;Rimini&#39;,
+       &#39;In fase di definizione/aggiornamento&#39;], dtype=object)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Creaiamo un dataframe che contiene solo la regione Emilia Romagna e la pronvincia Bologna</span>
+<span class="n">prov_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Bologna&quot;</span><span class="p">,</span> <span class="s2">&quot;Rimini&quot;</span><span class="p">,</span> <span class="s2">&quot;Parma&quot;</span><span class="p">]</span> 
+<span class="n">df_choice</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_regione&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;Emilia-Romagna&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">prov_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+<span class="n">df_choice</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+      <th>stato</th>
+      <th>codice_regione</th>
+      <th>denominazione_regione</th>
+      <th>codice_provincia</th>
+      <th>denominazione_provincia</th>
+      <th>sigla_provincia</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>totale_casi</th>
+      <th>note_it</th>
+      <th>note_en</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>22</th>
+      <td>2020-02-24T18:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>37</td>
+      <td>Bologna</td>
+      <td>BO</td>
+      <td>44.494367</td>
+      <td>11.341721</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>150</th>
+      <td>2020-02-25T18:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>37</td>
+      <td>Bologna</td>
+      <td>BO</td>
+      <td>44.494367</td>
+      <td>11.341721</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>278</th>
+      <td>2020-02-26T18:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>37</td>
+      <td>Bologna</td>
+      <td>BO</td>
+      <td>44.494367</td>
+      <td>11.341721</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>406</th>
+      <td>2020-02-27T18:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>37</td>
+      <td>Bologna</td>
+      <td>BO</td>
+      <td>44.494367</td>
+      <td>11.341721</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>534</th>
+      <td>2020-02-28T18:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>37</td>
+      <td>Bologna</td>
+      <td>BO</td>
+      <td>44.494367</td>
+      <td>11.341721</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Guardiamo il tipo dei dati </span>
+<span class="c1"># Controlliamo se i numeri sono interi o float</span>
+<span class="n">df_choice</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 46 entries, 22 to 5782
+Data columns (total 12 columns):
+ #   Column                   Non-Null Count  Dtype  
+---  ------                   --------------  -----  
+ 0   data                     46 non-null     object 
+ 1   stato                    46 non-null     object 
+ 2   codice_regione           46 non-null     int64  
+ 3   denominazione_regione    46 non-null     object 
+ 4   codice_provincia         46 non-null     int64  
+ 5   denominazione_provincia  46 non-null     object 
+ 6   sigla_provincia          46 non-null     object 
+ 7   lat                      46 non-null     float64
+ 8   long                     46 non-null     float64
+ 9   totale_casi              46 non-null     int64  
+ 10  note_it                  0 non-null      object 
+ 11  note_en                  0 non-null      object 
+dtypes: float64(2), int64(3), object(7)
+memory usage: 4.7+ KB
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Convertiamo il tipo data in datetime e manipoliamola</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_choice</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+<span class="n">df_choice</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>22   2020-02-24 18:00:00
+Name: data, dtype: datetime64[ns]
+22    2020-02-24
+Name: data, dtype: object
+22    2020
+Name: data, dtype: int64
+22    02-24
+Name: data, dtype: object
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:2: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Pandas-Plot-(Matplotlib-based)-Customization">Pandas Plot (Matplotlib based) Customization<a class="anchor-link" href="#Pandas-Plot-(Matplotlib-based)-Customization"> </a></h4><ul>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html">Reference Pandas Data Visualization</a></li>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.html">Refrence Pandas Dataframe Plot Api</a></li>
+<li><a href="https://matplotlib.org/3.2.1/gallery/style_sheets/style_sheets_reference.html">Matplotlib Style</a></li>
+<li><a href="https://matplotlib.org/3.2.1/api/_as_gen/matplotlib.pyplot.plot.html">Matplotlib plot Documentation</a></li>
+<li><a href="https://matplotlib.org/3.2.1/tutorials/introductory/customizing.html">Matplotlib Customize Rc Params</a></li>
+<li><a href="https://matplotlib.org/3.2.1/api/axes_api.html">Matplotlib Axes Api</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">from</span> <span class="nn">cycler</span> <span class="k">import</span> <span class="n">cycler</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> <span class="c1"># Parametri customizzazzione visualizzazione usando pandas</span>
+ <span class="n">ax</span> <span class="o">=</span> <span class="n">df_choice</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span>    
+                                    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;My tile&quot;</span><span class="p">,</span>
+                                    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span>
+                                    <span class="n">grid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                    <span class="n">style</span><span class="o">=</span><span class="s2">&quot;o--g&quot;</span><span class="p">)</span> <span class="c1"># &#39;-&#39;, &#39;--&#39;, &#39;-.&#39;, &#39;:&#39;] fmt = &#39;[marker][line][color]&#39;</span>
+                                    <span class="c1">#legend=True,fontsize=20, rot=30,</span>
+                                     
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/pandas/Pandas_Esercizio_43_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> <span class="c1"># Parametri customizzazzione visualizzazione usando pandas</span>
+ <span class="n">ax</span> <span class="o">=</span> <span class="n">df_choice</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span>    
+                                    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;My tile&quot;</span><span class="p">,</span>
+                                    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span>
+                                    <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                                    <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+                                    <span class="n">style</span><span class="o">=</span><span class="s2">&quot;o--g&quot;</span><span class="p">)</span> <span class="c1"># &#39;-&#39;, &#39;--&#39;, &#39;-.&#39;, &#39;:&#39;] fmt = &#39;[marker][line][color]&#39;</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Totale Casi Bologna&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;40&#39;</span><span class="p">,</span><span class="n">pad</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;20&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;totale dei casi&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;20&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Legenda&quot;</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.legend.Legend at 0x7f56205a0400&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/pandas/Pandas_Esercizio_44_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#plt.style.use(&#39;ggplot&#39;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">available</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;Solarize_Light2&#39;, &#39;_classic_test_patch&#39;, &#39;bmh&#39;, &#39;classic&#39;, &#39;dark_background&#39;, &#39;fast&#39;, &#39;fivethirtyeight&#39;, &#39;ggplot&#39;, &#39;grayscale&#39;, &#39;seaborn&#39;, &#39;seaborn-bright&#39;, &#39;seaborn-colorblind&#39;, &#39;seaborn-dark&#39;, &#39;seaborn-dark-palette&#39;, &#39;seaborn-darkgrid&#39;, &#39;seaborn-deep&#39;, &#39;seaborn-muted&#39;, &#39;seaborn-notebook&#39;, &#39;seaborn-paper&#39;, &#39;seaborn-pastel&#39;, &#39;seaborn-poster&#39;, &#39;seaborn-talk&#39;, &#39;seaborn-ticks&#39;, &#39;seaborn-white&#39;, &#39;seaborn-whitegrid&#39;, &#39;tableau-colorblind10&#39;]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> <span class="c1"># Parametri customizzazzione visualizzazione usando pandas</span>
+<span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">available</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="n">el</span><span class="p">):</span>
+        <span class="n">df_choice</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;My title: &quot;</span> <span class="o">+</span> <span class="n">el</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_final</span> <span class="o">=</span> <span class="n">df_choice</span><span class="p">[[</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">]]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">):</span>
+    <span class="c1">#df_final.plot(x=&quot;data&quot;, y=&quot;totale_casi&quot;,kind=&quot;line&quot;)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linestyle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="c1">#plt.rc(&#39;lines&#39;, linewidth=2, color=&#39;red&#39;,linestyle=&#39;-.&#39;)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span> <span class="c1"># color line</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;axes&quot;</span><span class="p">,</span><span class="n">titlesize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">titlecolor</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">,</span><span class="n">titlepad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;axes.grid&quot;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;grid.color&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;grid.alpha&quot;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">})</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;font&quot;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;fantasy&quot;</span><span class="p">,</span> <span class="n">fantasy</span><span class="o">=</span><span class="s2">&quot;Comic Neue&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;date.autoformatter.day&quot;</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;%m-</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="c1">#&quot;%Y-%m&quot;</span>
+    <span class="c1"># Sample half element of a series</span>
+    <span class="n">xlist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">data_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_final</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_list</span><span class="p">),</span><span class="mi">2</span><span class="p">):</span>
+        <span class="n">xlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">df_final</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Titolo&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="n">xlist</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelrotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span> <span class="c1">#,labelcolor=&#39;orange&#39;,</span>
+    <span class="c1">#ax.yaxis.grid(False)</span>
+
+    <span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;assets/images/&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">directory</span><span class="o">+</span> <span class="s2">&quot;ex1.png&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>findfont: Font family [&#39;fantasy&#39;] not found. Falling back to DejaVu Sans.
+findfont: Font family [&#39;fantasy&#39;] not found. Falling back to DejaVu Sans.
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/pandas/Pandas_Esercizio_48_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Matplotlib-plot">Matplotlib plot<a class="anchor-link" href="#Matplotlib-plot"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># https://matplotlib.org/3.2.1/gallery/style_sheets/style_sheets_reference.html</span>
+<span class="c1"># https://matplotlib.org/3.1.0/gallery/color/named_colors.html</span>
+<span class="c1"># https://www.tutorialspoint.com/matplotlib/index.htm</span>
+<span class="c1"># plt.style(&quot;fiverthirtyeight&quot;)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">df_final</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_final</span><span class="p">[</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span><span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">((</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.05</span><span class="p">))</span> <span class="c1">#or use hex values</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Totale Casi Bologna&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;40&#39;</span><span class="p">,</span><span class="n">pad</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;20&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;totale dei casi&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;peachpuff&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;20&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span> <span class="p">,</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;r&#39;</span> <span class="p">,</span><span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">labelrotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span> <span class="p">,</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Legenda&quot;</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/pandas/Pandas_Esercizio_50_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Plotly">Plotly<a class="anchor-link" href="#Plotly"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plotly doc</span>
+<span class="c1"># Plotly offline figure show</span>
+<span class="c1"># https://plotly.com/python/reference/</span>
+
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+
+<span class="n">xx</span> <span class="o">=</span> <span class="n">df_final</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">yy</span> <span class="o">=</span> <span class="n">df_final</span><span class="p">[</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">xx</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">yy</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Totale Casi&quot;</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;lines+markers&quot;</span><span class="p">,</span>
+        <span class="n">showlegend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+            <span class="n">symbol</span><span class="o">=</span><span class="s2">&quot;circle-dot&quot;</span><span class="p">,</span>
+            <span class="n">size</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+            <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s2">&quot;rgb(0,255,0)&quot;</span><span class="p">,</span>
+            <span class="n">dash</span><span class="o">=</span><span class="s2">&quot;longdashdot&quot;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">text</span> <span class="o">=</span><span class="s2">&quot;Totale Casi Bologna&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="mf">0.9</span><span class="p">,</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">xanchor</span> <span class="o">=</span> <span class="s2">&quot;center&quot;</span><span class="p">,</span>
+        <span class="n">yanchor</span> <span class="o">=</span> <span class="s2">&quot;top&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">legend</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="mf">0.9</span><span class="p">,</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mf">0.03</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span>
+    <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;totale casi&quot;</span><span class="p">,</span>
+    <span class="n">font</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">family</span><span class="o">=</span><span class="s2">&quot;Courier New, monospace&quot;</span><span class="p">,</span>
+        <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="c1">#&quot;#7f7f7f&quot;, </span>
+    <span class="p">),</span>
+    <span class="n">hovermode</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span>  <span class="c1">#[&#39;x&#39;, &#39;y&#39;, &#39;closest&#39;, False]</span>
+    <span class="n">plot_bgcolor</span> <span class="o">=</span> <span class="s2">&quot;rgb(10,10,10)&quot;</span><span class="p">,</span>
+    <span class="n">paper_bgcolor</span><span class="o">=</span><span class="s2">&quot;rgb(0,0,0)&quot;</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<html>
+<head><meta charset="utf-8" /></head>
+<body>
+    <div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>
+                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>    
+            <div id="9af88b35-6cf5-4c0f-8c5c-3fd23cd6b349" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <script type="text/javascript">
+                
+                    window.PLOTLYENV=window.PLOTLYENV || {};
+                    
+                if (document.getElementById("9af88b35-6cf5-4c0f-8c5c-3fd23cd6b349")) {
+                    Plotly.newPlot(
+                        '9af88b35-6cf5-4c0f-8c5c-3fd23cd6b349',
+                        [{"line": {"color": "rgb(0,255,0)", "dash": "longdashdot", "width": 1}, "marker": {"size": 6, "symbol": "circle-dot"}, "mode": "lines+markers", "name": "Totale Casi", "showlegend": true, "type": "scatter", "x": ["2020-02-24", "2020-02-25", "2020-02-26", "2020-02-27", "2020-02-28", "2020-02-29", "2020-03-01", "2020-03-02", "2020-03-03", "2020-03-04", "2020-03-05", "2020-03-06", "2020-03-07", "2020-03-08", "2020-03-09", "2020-03-10", "2020-03-11", "2020-03-12", "2020-03-13", "2020-03-14", "2020-03-15", "2020-03-16", "2020-03-17", "2020-03-18", "2020-03-19", "2020-03-20", "2020-03-21", "2020-03-22", "2020-03-23", "2020-03-24", "2020-03-25", "2020-03-26", "2020-03-27", "2020-03-28", "2020-03-29", "2020-03-30", "2020-03-31", "2020-04-01", "2020-04-02", "2020-04-03", "2020-04-04", "2020-04-05", "2020-04-06", "2020-04-07", "2020-04-08", "2020-04-09"], "y": [0, 0, 0, 0, 0, 2, 2, 3, 6, 11, 19, 41, 49, 62, 80, 86, 108, 122, 155, 195, 230, 291, 333, 395, 465, 552, 610, 674, 833, 968, 1107, 1253, 1413, 1586, 1743, 1872, 1940, 2084, 2225, 2339, 2429, 2521, 2617, 2656, 2758, 2856]}],
+                        {"font": {"color": "orange", "family": "Courier New, monospace", "size": 20}, "hovermode": "x", "legend": {"x": 0.03, "y": 0.9}, "paper_bgcolor": "rgb(0,0,0)", "plot_bgcolor": "rgb(10,10,10)", "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "pie": [{"automargin": true, "type": "pie"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}}}, "title": {"text": "Totale Casi Bologna", "x": 0.5, "xanchor": "center", "y": 0.9, "yanchor": "top"}, "xaxis": {"title": {"text": "data"}}, "yaxis": {"title": {"text": "totale casi"}}},
+                        {"responsive": true}
+                    ).then(function(){
+                            
+var gd = document.getElementById('9af88b35-6cf5-4c0f-8c5c-3fd23cd6b349');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })
+                };
+                
+            </script>
+        </div>
+</body>
+</html>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Risoluzione-con-fuzioni">Risoluzione con fuzioni<a class="anchor-link" href="#Risoluzione-con-fuzioni"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">os</span> 
+
+<span class="k">def</span> <span class="nf">get_nomi_regioni</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+  <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_regione&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+<span class="k">def</span> <span class="nf">get_nomi_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">regione</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_regione&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">regione</span><span class="p">]</span>
+    <span class="c1">#ultima_data = list(a.tail(1)[&quot;data&quot;])[0]</span>
+    <span class="n">ultima_data</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">ultima_data</span><span class="p">][</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">])</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;In fase di definizione/aggiornamento&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="k">def</span> <span class="nf">plot_andamento_provincia_style</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">provincia</span><span class="p">):</span>
+    <span class="n">new</span> <span class="o">=</span>  <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">provincia</span><span class="p">][[</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">]]</span>
+    <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">):</span>
+        <span class="c1">#df_final.plot(x=&quot;data&quot;, y=&quot;totale_casi&quot;,kind=&quot;line&quot;)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linestyle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+        <span class="c1">#plt.rc(&#39;lines&#39;, linewidth=2, color=&#39;red&#39;,linestyle=&#39;-.&#39;)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span> <span class="c1"># color line</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;axes&quot;</span><span class="p">,</span><span class="n">titlesize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">titlecolor</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">,</span><span class="n">titlepad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;axes.grid&quot;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;grid.color&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;grid.alpha&quot;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">})</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;font&quot;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;fantasy&quot;</span><span class="p">,</span> <span class="n">fantasy</span><span class="o">=</span><span class="s2">&quot;Comic Neue&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;date.autoformatter.day&quot;</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;%m-</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="c1">#&quot;%Y-%m&quot;</span>
+        <span class="c1"># Sample half element of a series</span>
+        <span class="n">xlist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">data_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">new</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_list</span><span class="p">),</span><span class="mi">2</span><span class="p">):</span>
+            <span class="n">xlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">new</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Titolo&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="n">xlist</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelrotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span> <span class="c1">#,labelcolor=&#39;orange&#39;,</span>
+        <span class="c1">#ax.yaxis.grid(False)</span>
+        <span class="c1">#write_image(ax.figure)</span>
+        <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span>
+
+<span class="k">def</span> <span class="nf">write_image</span><span class="p">(</span><span class="n">fig</span><span class="p">):</span>
+    <span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;assets/images/&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">directory</span><span class="o">+</span> <span class="s2">&quot;ex1.png&quot;</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">plot_andamento_provincia</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">provincia</span><span class="p">):</span>
+  <span class="n">new</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">provincia</span><span class="p">][[</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">]]</span>
+  <span class="n">ax</span> <span class="o">=</span> <span class="n">new</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+  <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span>
+
+<span class="c1"># Leggiamo i dati</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">nomi_regioni</span> <span class="o">=</span> <span class="n">get_nomi_regioni</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nomi_regioni</span><span class="p">)</span>
+
+<span class="n">regione</span> <span class="o">=</span> <span class="s2">&quot;Friuli Venezia Giulia&quot;</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">get_nomi_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">regione</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
+<span class="n">provincia</span><span class="o">=</span><span class="s2">&quot;Trieste&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plot_andamento_provincia</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">provincia</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plot_andamento_provincia_style</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">provincia</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;Abruzzo&#39;, &#39;Basilicata&#39;, &#39;P.A. Bolzano&#39;, &#39;Calabria&#39;, &#39;Campania&#39;, &#39;Emilia-Romagna&#39;, &#39;Friuli Venezia Giulia&#39;, &#39;Lazio&#39;, &#39;Liguria&#39;, &#39;Lombardia&#39;, &#39;Marche&#39;, &#39;Molise&#39;, &#39;Piemonte&#39;, &#39;Puglia&#39;, &#39;Sardegna&#39;, &#39;Sicilia&#39;, &#39;Toscana&#39;, &#39;P.A. Trento&#39;, &#39;Umbria&#39;, &#34;Valle d&#39;Aosta&#34;, &#39;Veneto&#39;]
+[&#39;Gorizia&#39;, &#39;Pordenone&#39;, &#39;Trieste&#39;, &#39;Udine&#39;]
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/pandas/Pandas_Esercizio_54_1.png"
+>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/pandas/Pandas_Esercizio_54_2.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Parte-2.-Comparare-l'andamento-nel-tempo-dei-contagiati-delle-prime-3-provincie-della-nostra-regione-(Emilia-Romagna)-con-quelli--di-una-provincia-appartenente-sempre-alla-nostra-regione.">Parte 2. Comparare l'andamento nel tempo dei contagiati delle prime 3 provincie della nostra regione (Emilia-Romagna) con quelli  di una provincia appartenente sempre alla nostra regione.<a class="anchor-link" href="#Parte-2.-Comparare-l'andamento-nel-tempo-dei-contagiati-delle-prime-3-provincie-della-nostra-regione-(Emilia-Romagna)-con-quelli--di-una-provincia-appartenente-sempre-alla-nostra-regione."> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">plot_data_es2</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="c1"># Update data for plot</span>
+    <span class="c1">#fig, ax = subplots(1, 1, figsize=(18,8))</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">)</span><span class="c1">#,ax=ax)</span>
+
+<span class="k">def</span> <span class="nf">get_nomi_regioni</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">nomi_regioni</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_regione&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+    <span class="n">nomi_regioni</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">nomi_regioni</span>
+
+<span class="k">def</span> <span class="nf">get_nomi_provincie</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">regione</span><span class="o">=</span><span class="s2">&quot;Emilia-Romagna&quot;</span><span class="p">):</span>
+    <span class="c1"># Nomi delle prime num provincie per numero di casi </span>
+    <span class="n">ultima_data_aggiornamento</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="s2">&quot;data&quot;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># Dataframe regione scelta e ultima data aggiornamento</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_regione&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">regione</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">ultima_data_aggiornamento</span><span class="p">)]</span>
+    <span class="c1"># Ordina dal più grande al più piccolo</span>
+    <span class="n">temp</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">nomi_province</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="n">num</span><span class="p">])</span>
+
+    <span class="c1"># Nomi pronvicie </span>
+    <span class="c1">#nomi_province = list(df[&quot;denominazione_provincia&quot;].unique())</span>
+    <span class="k">return</span> <span class="n">nomi_province</span>
+
+<span class="k">def</span> <span class="nf">es2</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">provincia</span><span class="p">,</span><span class="n">regione</span><span class="p">):</span>
+    <span class="c1"># Comparare l&#39;andamento nel tempo dei contagiati di ogni provincia della nostra regione (Emilia-Romagna).</span>
+    <span class="n">nomi_province</span> <span class="o">=</span> <span class="n">get_nomi_provincie</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">regione</span><span class="p">)</span>  <span class="c1"># Nomi delle prime N provincie per numero di casi </span>
+
+    <span class="c1"># Se la provincia che desidero compare non è tra le prime 3 l&#39;aggiungo</span>
+    <span class="k">if</span> <span class="n">provincia</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nomi_province</span><span class="p">:</span>
+        <span class="n">nomi_province</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">provincia</span><span class="p">)</span>
+
+    <span class="c1">#print(nomi_province)</span>
+    <span class="n">df_fin_vec</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="n">data_vec</span> <span class="o">=</span> <span class="n">df</span>
+    <span class="n">mydict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">nome_provincia</span> <span class="ow">in</span> <span class="n">nomi_province</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">nome_provincia</span><span class="o">!=</span><span class="s1">&#39;In fase di definizione/aggiornamento&#39;</span><span class="p">:</span>
+            <span class="n">df_fin</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_regione&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">regione</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">nome_provincia</span><span class="p">)]</span>
+            <span class="n">mydict</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_fin</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+            <span class="n">mydict</span><span class="p">[</span><span class="n">nome_provincia</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_fin</span><span class="p">[</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">])</span>
+
+    <span class="n">df_fin</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mydict</span><span class="p">)</span>
+    <span class="n">df_fin</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_fin</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+    <span class="c1">#display(df_fin)</span>
+    <span class="n">plot_data_es2</span><span class="p">(</span><span class="n">df_fin</span><span class="p">)</span>
+
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv&quot;</span><span class="p">)</span>
+<span class="n">regione</span><span class="o">=</span><span class="s2">&quot;Emilia-Romagna&quot;</span>
+<span class="n">provincia</span><span class="o">=</span><span class="s2">&quot;Bologna&quot;</span>
+<span class="n">es2</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">provincia</span><span class="p">,</span><span class="n">regione</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:21: SettingWithCopyWarning:
+
+
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/pandas/Pandas_Esercizio_56_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Parte-3.-Creare-un-grafico-a-torta-con-le-percentuali-di-contagiati-per-ogni-provincia-apparente-alla-nostra-regione-(Emilia-Romagna)">Parte 3. Creare un grafico a torta con le percentuali di contagiati per ogni provincia apparente alla nostra regione (Emilia-Romagna)<a class="anchor-link" href="#Parte-3.-Creare-un-grafico-a-torta-con-le-percentuali-di-contagiati-per-ogni-provincia-apparente-alla-nostra-regione-(Emilia-Romagna)"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="n">regione</span><span class="o">=</span><span class="s2">&quot;Emilia-Romagna&quot;</span>
+<span class="n">provincia</span><span class="o">=</span><span class="s2">&quot;Bologna&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv&quot;</span><span class="p">)</span>
+<span class="n">ultima_data_aggiornamento</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="s2">&quot;data&quot;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df_choice</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_regione&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">regione</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;In fase di definizione/aggiornamento&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">ultima_data_aggiornamento</span><span class="p">)</span> <span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_choice</span><span class="p">)</span>
+<span class="n">cont</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;totale_casi&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_choice</span><span class="p">[</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">])</span>
+    <span class="p">}</span>
+<span class="n">df_plot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cont</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">df_choice</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">])</span> <span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">df_plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;pie&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.0f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">pctdistance</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">labeldistance</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
+<span class="c1">#fig.savefig(&quot;covid19.png&quot;)    </span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+      <th>stato</th>
+      <th>codice_regione</th>
+      <th>denominazione_regione</th>
+      <th>codice_provincia</th>
+      <th>denominazione_provincia</th>
+      <th>sigla_provincia</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>totale_casi</th>
+      <th>note_it</th>
+      <th>note_en</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5782</th>
+      <td>2020-04-09T17:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>37</td>
+      <td>Bologna</td>
+      <td>BO</td>
+      <td>44.494367</td>
+      <td>11.341721</td>
+      <td>2856</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5783</th>
+      <td>2020-04-09T17:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>38</td>
+      <td>Ferrara</td>
+      <td>FE</td>
+      <td>44.835991</td>
+      <td>11.618689</td>
+      <td>563</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5784</th>
+      <td>2020-04-09T17:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>40</td>
+      <td>Forlì-Cesena</td>
+      <td>FC</td>
+      <td>44.222686</td>
+      <td>12.040686</td>
+      <td>1081</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5785</th>
+      <td>2020-04-09T17:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>36</td>
+      <td>Modena</td>
+      <td>MO</td>
+      <td>44.646000</td>
+      <td>10.926155</td>
+      <td>2867</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5786</th>
+      <td>2020-04-09T17:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>34</td>
+      <td>Parma</td>
+      <td>PR</td>
+      <td>44.801074</td>
+      <td>10.328350</td>
+      <td>2421</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5787</th>
+      <td>2020-04-09T17:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>33</td>
+      <td>Piacenza</td>
+      <td>PC</td>
+      <td>45.051935</td>
+      <td>9.692633</td>
+      <td>3020</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5788</th>
+      <td>2020-04-09T17:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>39</td>
+      <td>Ravenna</td>
+      <td>RA</td>
+      <td>44.417225</td>
+      <td>12.199139</td>
+      <td>751</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5789</th>
+      <td>2020-04-09T17:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>35</td>
+      <td>Reggio nell'Emilia</td>
+      <td>RE</td>
+      <td>44.697353</td>
+      <td>10.630080</td>
+      <td>3505</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5790</th>
+      <td>2020-04-09T17:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>99</td>
+      <td>Rimini</td>
+      <td>RN</td>
+      <td>44.060901</td>
+      <td>12.565630</td>
+      <td>1613</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f561c48fa20&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/pandas/Pandas_Esercizio_58_2.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Visualizza-i-risultati-in-una-pagina-web-usando-(Dash-Plotly)">Visualizza i risultati in una pagina web usando (Dash Plotly)<a class="anchor-link" href="#Visualizza-i-risultati-in-una-pagina-web-usando-(Dash-Plotly)"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">os</span> 
+
+<span class="k">def</span> <span class="nf">get_nomi_regioni</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+  <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_regione&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+<span class="k">def</span> <span class="nf">get_nomi_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">regione</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_regione&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">regione</span><span class="p">]</span>
+    <span class="c1">#ultima_data = list(a.tail(1)[&quot;data&quot;])[0]</span>
+    <span class="n">ultima_data</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">ultima_data</span><span class="p">][</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">])</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;In fase di definizione/aggiornamento&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="k">def</span> <span class="nf">plot_andamento_pie</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">regione</span><span class="p">):</span>
+    <span class="n">ultima_data_aggiornamento</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="s2">&quot;data&quot;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">df_choice</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_regione&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">regione</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;In fase di definizione/aggiornamento&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">ultima_data_aggiornamento</span><span class="p">)</span> <span class="p">]</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">df_choice</span><span class="p">)</span>
+    <span class="n">cont</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;totale_casi&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_choice</span><span class="p">[</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">])</span>
+        <span class="p">}</span>
+    <span class="n">df_plot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cont</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">df_choice</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">])</span> <span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">):</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">df_plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;pie&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">,</span><span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.0f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">pctdistance</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">labeldistance</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span>
+
+<span class="k">def</span> <span class="nf">plot_andamento_provincia_style</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">provincia</span><span class="p">):</span>
+    <span class="n">new</span> <span class="o">=</span>  <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">provincia</span><span class="p">][[</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">]]</span>
+    <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">):</span>
+        <span class="c1">#df_final.plot(x=&quot;data&quot;, y=&quot;totale_casi&quot;,kind=&quot;line&quot;)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linestyle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+        <span class="c1">#plt.rc(&#39;lines&#39;, linewidth=2, color=&#39;red&#39;,linestyle=&#39;-.&#39;)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span> <span class="c1"># color line</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;axes&quot;</span><span class="p">,</span><span class="n">titlesize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">titlecolor</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">,</span><span class="n">titlepad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;axes.grid&quot;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;grid.color&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;grid.alpha&quot;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">})</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;font&quot;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;fantasy&quot;</span><span class="p">,</span> <span class="n">fantasy</span><span class="o">=</span><span class="s2">&quot;Comic Neue&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;date.autoformatter.day&quot;</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;%m-</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="c1">#&quot;%Y-%m&quot;</span>
+        <span class="c1"># Sample half element of a series</span>
+        <span class="n">xlist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">data_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">new</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_list</span><span class="p">),</span><span class="mi">2</span><span class="p">):</span>
+            <span class="n">xlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">new</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Totale Casi &quot;</span> <span class="o">+</span> <span class="n">provincia</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="n">xlist</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelrotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span> <span class="c1">#,labelcolor=&#39;orange&#39;,</span>
+        <span class="c1">#ax.yaxis.grid(False)</span>
+        <span class="c1">#write_image(ax.figure)</span>
+        <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span>
+
+<span class="k">def</span> <span class="nf">plot_andamento_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">regione</span><span class="p">):</span>
+    <span class="c1"># Comparare l&#39;andamento nel tempo dei contagiati di ogni provincia della nostra regione (Emilia-Romagna).</span>
+    <span class="n">nomi_province</span> <span class="o">=</span> <span class="n">get_nomi_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">regione</span><span class="p">)</span>  <span class="c1"># Nomi delle prime N provincie per numero di casi </span>
+
+    <span class="c1">#print(nomi_province)</span>
+    <span class="n">mydict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">nome_provincia</span> <span class="ow">in</span> <span class="n">nomi_province</span><span class="p">:</span>
+        <span class="n">df_fin</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">nome_provincia</span><span class="p">][[</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">]]</span>
+        <span class="n">mydict</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_fin</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+        <span class="n">mydict</span><span class="p">[</span><span class="n">nome_provincia</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_fin</span><span class="p">[</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">])</span>
+
+    <span class="n">df_fin</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mydict</span><span class="p">)</span>
+    <span class="c1">#display(df_fin)</span>
+    <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">):</span>
+        <span class="n">ax</span> <span class="o">=</span><span class="n">df_fin</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span>
+
+<span class="k">def</span> <span class="nf">write_image</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;assets/images/&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">directory</span><span class="o">+</span> <span class="n">name</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">plot_andamento_provincia</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">provincia</span><span class="p">):</span>
+  <span class="n">new</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">provincia</span><span class="p">][[</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">]]</span>
+  <span class="n">ax</span> <span class="o">=</span> <span class="n">new</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+  <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span>
+
+<span class="c1"># Leggiamo i dati</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">nomi_regioni</span> <span class="o">=</span> <span class="n">get_nomi_regioni</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nomi_regioni</span><span class="p">)</span>
+
+<span class="n">regione</span> <span class="o">=</span> <span class="s2">&quot;Emilia-Romagna&quot;</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">get_nomi_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">regione</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
+<span class="n">provincia</span><span class="o">=</span><span class="s2">&quot;Bologna&quot;</span>
+<span class="c1">#fig = plot_andamento_provincia(df,provincia)        ## Parte 1</span>
+<span class="n">fig1</span> <span class="o">=</span> <span class="n">plot_andamento_provincia_style</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">provincia</span><span class="p">)</span>  <span class="c1">## Parte 1</span>
+<span class="n">fig2</span><span class="o">=</span> <span class="n">plot_andamento_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">regione</span><span class="p">)</span>          <span class="c1">## Parte 2</span>
+<span class="n">fig3</span> <span class="o">=</span> <span class="n">plot_andamento_pie</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">regione</span><span class="p">)</span>          <span class="c1">## Parte 3</span>
+<span class="n">write_image</span><span class="p">(</span><span class="n">fig1</span><span class="p">,</span> <span class="s2">&quot;fig1.png&quot;</span><span class="p">)</span>
+<span class="n">write_image</span><span class="p">(</span><span class="n">fig2</span><span class="p">,</span> <span class="s2">&quot;fig2.png&quot;</span><span class="p">)</span>
+<span class="n">write_image</span><span class="p">(</span><span class="n">fig3</span><span class="p">,</span> <span class="s2">&quot;fig3.png&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;Abruzzo&#39;, &#39;Basilicata&#39;, &#39;P.A. Bolzano&#39;, &#39;Calabria&#39;, &#39;Campania&#39;, &#39;Emilia-Romagna&#39;, &#39;Friuli Venezia Giulia&#39;, &#39;Lazio&#39;, &#39;Liguria&#39;, &#39;Lombardia&#39;, &#39;Marche&#39;, &#39;Molise&#39;, &#39;Piemonte&#39;, &#39;Puglia&#39;, &#39;Sardegna&#39;, &#39;Sicilia&#39;, &#39;Toscana&#39;, &#39;P.A. Trento&#39;, &#39;Umbria&#39;, &#34;Valle d&#39;Aosta&#34;, &#39;Veneto&#39;]
+[&#39;Bologna&#39;, &#39;Ferrara&#39;, &#39;Forlì-Cesena&#39;, &#39;Modena&#39;, &#39;Parma&#39;, &#39;Piacenza&#39;, &#39;Ravenna&#39;, &#34;Reggio nell&#39;Emilia&#34;, &#39;Rimini&#39;]
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+      <th>stato</th>
+      <th>codice_regione</th>
+      <th>denominazione_regione</th>
+      <th>codice_provincia</th>
+      <th>denominazione_provincia</th>
+      <th>sigla_provincia</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>totale_casi</th>
+      <th>note_it</th>
+      <th>note_en</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5782</th>
+      <td>2020-04-09 17:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>37</td>
+      <td>Bologna</td>
+      <td>BO</td>
+      <td>44.494367</td>
+      <td>11.341721</td>
+      <td>2856</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5783</th>
+      <td>2020-04-09 17:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>38</td>
+      <td>Ferrara</td>
+      <td>FE</td>
+      <td>44.835991</td>
+      <td>11.618689</td>
+      <td>563</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5784</th>
+      <td>2020-04-09 17:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>40</td>
+      <td>Forlì-Cesena</td>
+      <td>FC</td>
+      <td>44.222686</td>
+      <td>12.040686</td>
+      <td>1081</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5785</th>
+      <td>2020-04-09 17:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>36</td>
+      <td>Modena</td>
+      <td>MO</td>
+      <td>44.646000</td>
+      <td>10.926155</td>
+      <td>2867</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5786</th>
+      <td>2020-04-09 17:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>34</td>
+      <td>Parma</td>
+      <td>PR</td>
+      <td>44.801074</td>
+      <td>10.328350</td>
+      <td>2421</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5787</th>
+      <td>2020-04-09 17:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>33</td>
+      <td>Piacenza</td>
+      <td>PC</td>
+      <td>45.051935</td>
+      <td>9.692633</td>
+      <td>3020</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5788</th>
+      <td>2020-04-09 17:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>39</td>
+      <td>Ravenna</td>
+      <td>RA</td>
+      <td>44.417225</td>
+      <td>12.199139</td>
+      <td>751</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5789</th>
+      <td>2020-04-09 17:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>35</td>
+      <td>Reggio nell'Emilia</td>
+      <td>RE</td>
+      <td>44.697353</td>
+      <td>10.630080</td>
+      <td>3505</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5790</th>
+      <td>2020-04-09 17:00:00</td>
+      <td>ITA</td>
+      <td>8</td>
+      <td>Emilia-Romagna</td>
+      <td>99</td>
+      <td>Rimini</td>
+      <td>RN</td>
+      <td>44.060901</td>
+      <td>12.565630</td>
+      <td>1613</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/pandas/Pandas_Esercizio_60_2.png"
+>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/pandas/Pandas_Esercizio_60_3.png"
+>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/pandas/Pandas_Esercizio_60_4.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install dash flask_ngrok
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting dash
+  Downloading https://files.pythonhosted.org/packages/1b/6b/1536b49b021c9c0f25a99a28e7f4680093b03d176acf57bd5e2e566795be/dash-1.10.0.tar.gz (63kB)
+     |████████████████████████████████| 71kB 1.1MB/s 
+Collecting flask_ngrok
+  Downloading https://files.pythonhosted.org/packages/af/6c/f54cb686ad1129e27d125d182f90f52b32f284e6c8df58c1bae54fa1adbc/flask_ngrok-0.0.25-py3-none-any.whl
+Requirement already satisfied: Flask&gt;=1.0.2 in /usr/local/lib/python3.6/dist-packages (from dash) (1.1.1)
+Collecting flask-compress
+  Downloading https://files.pythonhosted.org/packages/0e/2a/378bd072928f6d92fd8c417d66b00c757dc361c0405a46a0134de6fd323d/Flask-Compress-1.4.0.tar.gz
+Requirement already satisfied: plotly in /usr/local/lib/python3.6/dist-packages (from dash) (4.4.1)
+Collecting dash_renderer==1.3.0
+  Downloading https://files.pythonhosted.org/packages/75/0f/a33126f04da739d911e7be138d4c63bc8f4e3f5b5e441fe5a6df5b3ab51e/dash_renderer-1.3.0.tar.gz (1.1MB)
+     |████████████████████████████████| 1.1MB 3.5MB/s 
+Collecting dash-core-components==1.9.0
+  Downloading https://files.pythonhosted.org/packages/e8/73/142f954b7949d07a825161614f7e9c5fb856a87f153f2b7e4c1e612e1854/dash_core_components-1.9.0.tar.gz (3.4MB)
+     |████████████████████████████████| 3.4MB 14.4MB/s 
+Collecting dash-html-components==1.0.3
+  Downloading https://files.pythonhosted.org/packages/da/20/46714ae501ccf16e5e37ca160c06e27347d19889687454168730e6744cdc/dash_html_components-1.0.3.tar.gz (187kB)
+     |████████████████████████████████| 194kB 31.8MB/s 
+Collecting dash-table==4.6.2
+  Downloading https://files.pythonhosted.org/packages/48/a5/2574879216fa62ba04fbf6750a8da822c559d958e86a5439a0788e9830a9/dash_table-4.6.2.tar.gz (1.8MB)
+     |████████████████████████████████| 1.8MB 26.2MB/s 
+Requirement already satisfied: future in /usr/local/lib/python3.6/dist-packages (from dash) (0.16.0)
+Requirement already satisfied: requests in /usr/local/lib/python3.6/dist-packages (from flask_ngrok) (2.21.0)
+Requirement already satisfied: click&gt;=5.1 in /usr/local/lib/python3.6/dist-packages (from Flask&gt;=1.0.2-&gt;dash) (7.1.1)
+Requirement already satisfied: itsdangerous&gt;=0.24 in /usr/local/lib/python3.6/dist-packages (from Flask&gt;=1.0.2-&gt;dash) (1.1.0)
+Requirement already satisfied: Jinja2&gt;=2.10.1 in /usr/local/lib/python3.6/dist-packages (from Flask&gt;=1.0.2-&gt;dash) (2.11.1)
+Requirement already satisfied: Werkzeug&gt;=0.15 in /usr/local/lib/python3.6/dist-packages (from Flask&gt;=1.0.2-&gt;dash) (1.0.1)
+Requirement already satisfied: six in /usr/local/lib/python3.6/dist-packages (from plotly-&gt;dash) (1.12.0)
+Requirement already satisfied: retrying&gt;=1.3.3 in /usr/local/lib/python3.6/dist-packages (from plotly-&gt;dash) (1.3.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.6/dist-packages (from requests-&gt;flask_ngrok) (2019.11.28)
+Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.6/dist-packages (from requests-&gt;flask_ngrok) (3.0.4)
+Requirement already satisfied: urllib3&lt;1.25,&gt;=1.21.1 in /usr/local/lib/python3.6/dist-packages (from requests-&gt;flask_ngrok) (1.24.3)
+Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /usr/local/lib/python3.6/dist-packages (from requests-&gt;flask_ngrok) (2.8)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in /usr/local/lib/python3.6/dist-packages (from Jinja2&gt;=2.10.1-&gt;Flask&gt;=1.0.2-&gt;dash) (1.1.1)
+Building wheels for collected packages: dash, flask-compress, dash-renderer, dash-core-components, dash-html-components, dash-table
+  Building wheel for dash (setup.py) ... done
+  Created wheel for dash: filename=dash-1.10.0-cp36-none-any.whl size=71321 sha256=7ec3124f9012e4c0ce4963950f048a2eb05e80b0718256ce53e4101d2202adea
+  Stored in directory: /root/.cache/pip/wheels/96/99/b7/dd0abccbf36509041224628ed0f3ea1f82c59100437eb71370
+  Building wheel for flask-compress (setup.py) ... done
+  Created wheel for flask-compress: filename=Flask_Compress-1.4.0-cp36-none-any.whl size=3712 sha256=dbf310a128347bb72863693245606462166cb35846f352e0a4a7244f91b9a967
+  Stored in directory: /root/.cache/pip/wheels/96/32/88/a1f6d9dd3c29570ab3a8acc0d556b3b20abcf3c623c868ce0a
+  Building wheel for dash-renderer (setup.py) ... done
+  Created wheel for dash-renderer: filename=dash_renderer-1.3.0-cp36-none-any.whl size=1145100 sha256=ff05df1e70f12136e5a167fcc5941e693b0230c4bb98d198ef8c37edb445e279
+  Stored in directory: /root/.cache/pip/wheels/39/89/6b/e46bc78dc99af4088f1fc70dc63c5720ba83f1aca1f6003e8c
+  Building wheel for dash-core-components (setup.py) ... done
+  Created wheel for dash-core-components: filename=dash_core_components-1.9.0-cp36-none-any.whl size=3407093 sha256=de7ec6b558182da002c20345ae98fa9347e3b1af80e4eb403d519b8858972b4d
+  Stored in directory: /root/.cache/pip/wheels/ed/bf/11/adcf65e105887e7b9e16a80342894ae4de7016593979d11af9
+  Building wheel for dash-html-components (setup.py) ... done
+  Created wheel for dash-html-components: filename=dash_html_components-1.0.3-cp36-none-any.whl size=427303 sha256=b9770e4f34851be1a717a5a6c91450bc9640cbc6a95d5d545830530518817f67
+  Stored in directory: /root/.cache/pip/wheels/22/c0/79/ef4c2b20a23dc8457ae75c3da5f63163db213d86e13e00fe26
+  Building wheel for dash-table (setup.py) ... done
+  Created wheel for dash-table: filename=dash_table-4.6.2-cp36-none-any.whl size=1769391 sha256=8c4c904010eb933433010cd0ffdc7a744309458e21122edf6c32c42e427c5c6c
+  Stored in directory: /root/.cache/pip/wheels/75/da/06/0c15a405f1d30a4886955cccd976c8b0d0e6555341c1344f03
+Successfully built dash flask-compress dash-renderer dash-core-components dash-html-components dash-table
+Installing collected packages: flask-compress, dash-renderer, dash-core-components, dash-html-components, dash-table, dash, flask-ngrok
+Successfully installed dash-1.10.0 dash-core-components-1.9.0 dash-html-components-1.0.3 dash-renderer-1.3.0 dash-table-4.6.2 flask-compress-1.4.0 flask-ngrok-0.0.25
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> assets/typography.css
+<span class="n">body</span> <span class="p">{</span>
+    <span class="n">padding</span><span class="p">:</span> <span class="mi">20</span><span class="n">px</span> <span class="mi">300</span><span class="n">px</span> <span class="mi">0</span><span class="n">px</span> <span class="mi">300</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">margin</span> <span class="p">:</span> <span class="mi">0</span><span class="n">px</span> <span class="mi">0</span><span class="n">px</span> <span class="mi">0</span><span class="n">px</span>  <span class="mi">0</span><span class="n">px</span><span class="p">;</span>
+    <span class="o">/*</span><span class="n">padding</span> <span class="p">:</span> <span class="mi">0</span><span class="n">px</span> <span class="mi">0</span><span class="n">px</span> <span class="mi">0</span><span class="n">px</span> <span class="mi">0</span><span class="n">px</span><span class="p">;</span><span class="o">*/</span>
+    <span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="n">black</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Writing assets/typography.css
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">dash</span>
+<span class="kn">import</span> <span class="nn">dash_html_components</span> <span class="k">as</span> <span class="nn">html</span>
+<span class="kn">from</span> <span class="nn">flask_ngrok</span> <span class="k">import</span> <span class="n">run_with_ngrok</span>
+
+<span class="n">external_stylesheets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://codepen.io/chriddyp/pen/bWLwgP.css&#39;</span><span class="p">]</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">dash</span><span class="o">.</span><span class="n">Dash</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">external_stylesheets</span><span class="o">=</span><span class="n">external_stylesheets</span><span class="p">)</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">server</span>
+<span class="n">run_with_ngrok</span><span class="p">(</span><span class="n">server</span><span class="p">)</span> 
+
+<span class="n">app</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span>
+        <span class="p">[</span>   
+            <span class="n">html</span><span class="o">.</span><span class="n">Img</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s1">&#39;/assets/images/fig1.png&#39;</span><span class="p">),</span>
+        <span class="p">]),</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span>
+        <span class="p">[</span>   
+            <span class="n">html</span><span class="o">.</span><span class="n">Img</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s1">&#39;/assets/images/fig2.png&#39;</span><span class="p">),</span>
+        <span class="p">]),</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span>
+        <span class="p">[</span>   
+            <span class="n">html</span><span class="o">.</span><span class="n">Img</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s1">&#39;/assets/images/fig3.png&#39;</span><span class="p">),</span>
+        <span class="p">])</span>
+    <span class="p">],</span><span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;backgroundColor&#39;</span><span class="p">:</span> <span class="s2">&quot;rgb(0,0,0)&quot;</span><span class="p">,</span>  <span class="s2">&quot;margin&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;padding&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">})</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="c1">#app.run_server() #debug=True, host=&quot;0.0.0.0&quot;, port=8900)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> * Serving Flask app &#34;__main__&#34; (lazy loading)
+ * Environment: production
+<span class="ansi-red-fg">   WARNING: This is a development server. Do not use it in a production deployment.</span>
+   Use a production WSGI server instead.
+ * Debug mode: off
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre> * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> * Running on http://4ef1b650.ngrok.io
+ * Traffic stats available on http://127.0.0.1:4040
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>127.0.0.1 - - [09/Apr/2020 19:34:58] &#34;<span class="ansi-white-fg">GET / HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:34:58] &#34;<span class="ansi-white-fg">GET /assets/typography.css?m=1586460888.1107323 HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:34:58] &#34;<span class="ansi-white-fg">GET /_dash-component-suites/dash_renderer/react@16.v1_3_0m1586460880.13.0.min.js HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:34:58] &#34;<span class="ansi-white-fg">GET /_dash-component-suites/dash_renderer/polyfill@7.v1_3_0m1586460880.8.7.min.js HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:34:59] &#34;<span class="ansi-white-fg">GET /_dash-component-suites/dash_html_components/dash_html_components.v1_0_3m1586460882.min.js HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:34:59] &#34;<span class="ansi-white-fg">GET /_dash-component-suites/dash_renderer/prop-types@15.v1_3_0m1586460880.7.2.min.js HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:34:59] &#34;<span class="ansi-white-fg">GET /_dash-component-suites/dash_renderer/dash_renderer.v1_3_0m1586460880.min.js HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:34:59] &#34;<span class="ansi-white-fg">GET /_dash-component-suites/dash_renderer/react-dom@16.v1_3_0m1586460880.13.0.min.js HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:35:00] &#34;<span class="ansi-white-fg">GET /_dash-dependencies HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:35:00] &#34;<span class="ansi-white-fg">GET /_favicon.ico?v=1.10.0 HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:35:00] &#34;<span class="ansi-white-fg">GET /_dash-layout HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:35:01] &#34;<span class="ansi-white-fg">GET /assets/images/fig1.png HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:35:01] &#34;<span class="ansi-white-fg">GET /assets/images/fig2.png HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:35:01] &#34;<span class="ansi-white-fg">GET /assets/images/fig3.png HTTP/1.1</span>&#34; 200 -
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

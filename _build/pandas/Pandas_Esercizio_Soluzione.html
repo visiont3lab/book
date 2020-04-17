@@ -1,0 +1,519 @@
+---
+redirect_from:
+  - "pandas/pandas-esercizio-soluzione"
+interact_link: content/pandas/Pandas_Esercizio_Soluzione.ipynb
+kernel_name: python3
+kernel_path: content/pandas
+has_widgets: false
+title: |-
+  Pandas Esercizio Soluzione
+pagenum: 1
+prev_page:
+  url: /pandas/Pandas_Esercizio.html
+next_page:
+  url: /pandas/Pandas.html
+suffix: .ipynb
+search: dpc covid com colab master dati contagiati provincia raw githubusercontent pcm ita csv landamento dei nel tempo nostra regione parte research google province regioni andamento nazionale propria della emilia romagna con di alla href github visiontlab data visualization blob courses pandas pandaseserciziosoluzione ipynb target parentimg src assets badge svg alt open descrizione datasets datiprovince datiregioni datiitalia obbiettivo utilizzando provinciali analizzare nella plottare comparare delle prime provincie quelli una appartenente sempre creare un grafico torta le percentuali per ogni apparente importare librerie website development
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Pandas Esercizio Soluzione</div>
+</div>
+    
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://colab.research.google.com/github/visiont3lab/data-visualization/blob/master/courses/02_Pandas/Pandas_Esercizio_Soluzione.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Descrizione">Descrizione<a class="anchor-link" href="#Descrizione"> </a></h3><p>Datasets:</p>
+<ul>
+<li>dati_province = "<a href="https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv">https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv</a>"</li>
+<li>dati_regioni = "<a href="https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv">https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv</a>"</li>
+<li>dati_italia = "<a href="https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv">https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv</a>"</li>
+</ul>
+<p>Obbiettivo: Utilizzando i dati provinciali analizzare l'andamento dei contagiati nella propria provincia nel tempo.</p>
+<ol>
+<li>Plottare l'andamento nel tempo dei contagiati della propria provincia. </li>
+<li>Comparare l'andamento nel tempo dei contagiati delle prime 3 provincie della nostra regione (Emilia-Romagna) con quelli  di una provincia appartenente sempre alla nostra regione.</li>
+<li>Creare un grafico a torta con le percentuali di contagiati per ogni provincia apparente alla nostra regione (Emilia-Romagna) </li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Importare-Librerie">Importare Librerie<a class="anchor-link" href="#Importare-Librerie"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;assets/images/&quot;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Parte-1">Parte 1<a class="anchor-link" href="#Parte-1"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_andamento_provincia_style</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">provincia</span><span class="p">):</span>
+    <span class="n">df_new</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">provincia</span><span class="p">]</span>
+    <span class="c1">#display(df_new.head())</span>
+    <span class="c1">#display(df_new.info())</span>
+    <span class="c1">#plt.style.use(&quot;dark_background&quot;)</span>
+    <span class="n">lista</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_new</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+    <span class="n">new_lista</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">lista</span><span class="p">),</span><span class="mi">2</span><span class="p">):</span>
+        <span class="n">new_lista</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lista</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;dark_background&quot;</span><span class="p">):</span>
+        
+        <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;lines&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+        <span class="c1">#plt.rcParams[&#39;lines.linewidth&#39;]=10</span>
+        <span class="c1">#plt.rcParams[&#39;lines.markersize&#39;]=10</span>
+        <span class="c1">#plt.rcParams[&#39;lines.markerfacecolor&#39;] =&quot;red&quot;</span>
+        <span class="c1">#plt.rcParams[&#39;axes.prop_cycle&#39;] = cycler(color=[&#39;y&#39;]) # color line</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;grid&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;axes&quot;</span><span class="p">,</span><span class="n">titlesize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">titlecolor</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;font&quot;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;fantasy&quot;</span><span class="p">,</span> <span class="n">fantasy</span><span class="o">=</span><span class="s2">&quot;Comic Neue&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;date.autoformatter.day&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;%m-</span><span class="si">%d</span><span class="s2">&quot;</span>
+        
+        <span class="c1">#plt.rcParams[&quot;date.autoformatter.day&quot;]= &quot;%m-%d&quot; #&quot;%Y-%m&quot;</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Andamento Provincia: &quot;</span> <span class="o">+</span> <span class="n">provincia</span> <span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">9</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;o--c&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="n">new_lista</span><span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Totale casi&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span><span class="n">labelcolor</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span><span class="n">labelcolor</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Legenda&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;assets/images/fig1.png&quot;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv&quot;</span><span class="p">)</span>
+<span class="n">provincia</span> <span class="o">=</span> <span class="s2">&quot;Ravenna&quot;</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+
+<span class="c1"># Esercizion 1)</span>
+<span class="n">fig1</span> <span class="o">=</span> <span class="n">plot_andamento_provincia_style</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">provincia</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>findfont: Font family [&#39;fantasy&#39;] not found. Falling back to DejaVu Sans.
+findfont: Font family [&#39;fantasy&#39;] not found. Falling back to DejaVu Sans.
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/pandas/Pandas_Esercizio_Soluzione_5_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Parte-2">Parte 2<a class="anchor-link" href="#Parte-2"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_nomi_regioni</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+  <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_regione&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+<span class="k">def</span> <span class="nf">get_nomi_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">regione</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_regione&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">regione</span><span class="p">]</span>
+    <span class="c1">#ultima_data = list(a.tail(1)[&quot;data&quot;])[0]</span>
+    <span class="n">ultima_data</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">ultima_data</span><span class="p">][</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">])</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;In fase di definizione/aggiornamento&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="k">def</span> <span class="nf">get_andamento_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">regione</span><span class="p">):</span>
+    <span class="n">nomi_province</span> <span class="o">=</span> <span class="n">get_nomi_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">regione</span><span class="p">)</span>
+    <span class="n">my_dict</span><span class="o">=</span><span class="p">{}</span>
+    <span class="n">my_dict</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">nome</span> <span class="ow">in</span> <span class="n">nomi_province</span><span class="p">:</span>
+        <span class="n">my_dict</span><span class="p">[</span><span class="n">nome</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">nome</span><span class="p">][</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">])</span>
+
+    <span class="n">df_new</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">my_dict</span><span class="p">)</span>
+    <span class="c1">#display(df_new.head())</span>
+    <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;seaborn&quot;</span><span class="p">):</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Andamento Province della regione &quot;</span> <span class="o">+</span><span class="n">regione</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;assets/images/fig2.png&quot;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span>
+
+<span class="c1"># Esercizio 2)</span>
+<span class="n">regione</span><span class="o">=</span><span class="s2">&quot;Emilia-Romagna&quot;</span>
+<span class="n">fig2</span> <span class="o">=</span> <span class="n">get_andamento_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">regione</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/pandas/Pandas_Esercizio_Soluzione_7_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Parte-3">Parte 3<a class="anchor-link" href="#Parte-3"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">pie_plot_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">regione</span><span class="p">):</span>
+    <span class="n">ultima_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="s2">&quot;data&quot;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">a</span> <span class="o">=</span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_regione&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">regione</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">ultima_data</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">]</span><span class="o">!=</span><span class="s2">&quot;In fase di definizione/aggiornamento&quot;</span><span class="p">)</span> <span class="p">]</span>
+    <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;Solarize_Light2&quot;</span><span class="p">):</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;pie&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">,</span><span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.0f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span> <span class="c1">#, pctdistance=1.1, labeldistance=1.2)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;assets/images/fig3.png&quot;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span>
+
+<span class="c1"># Check style</span>
+<span class="c1"># print(plt.style.available)</span>
+<span class="c1"># Esercizio 3</span>
+<span class="n">fig3</span> <span class="o">=</span> <span class="n">pie_plot_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">regione</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/pandas/Pandas_Esercizio_Soluzione_9_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Website-development">Website development<a class="anchor-link" href="#Website-development"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install dash flask_ngrok
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Requirement already satisfied: dash in /usr/local/lib/python3.6/dist-packages (1.10.0)
+Requirement already satisfied: flask_ngrok in /usr/local/lib/python3.6/dist-packages (0.0.25)
+Requirement already satisfied: Flask&gt;=1.0.2 in /usr/local/lib/python3.6/dist-packages (from dash) (1.1.1)
+Requirement already satisfied: dash-renderer==1.3.0 in /usr/local/lib/python3.6/dist-packages (from dash) (1.3.0)
+Requirement already satisfied: flask-compress in /usr/local/lib/python3.6/dist-packages (from dash) (1.4.0)
+Requirement already satisfied: plotly in /usr/local/lib/python3.6/dist-packages (from dash) (4.4.1)
+Requirement already satisfied: dash-table==4.6.2 in /usr/local/lib/python3.6/dist-packages (from dash) (4.6.2)
+Requirement already satisfied: dash-html-components==1.0.3 in /usr/local/lib/python3.6/dist-packages (from dash) (1.0.3)
+Requirement already satisfied: dash-core-components==1.9.0 in /usr/local/lib/python3.6/dist-packages (from dash) (1.9.0)
+Requirement already satisfied: future in /usr/local/lib/python3.6/dist-packages (from dash) (0.16.0)
+Requirement already satisfied: requests in /usr/local/lib/python3.6/dist-packages (from flask_ngrok) (2.21.0)
+Requirement already satisfied: itsdangerous&gt;=0.24 in /usr/local/lib/python3.6/dist-packages (from Flask&gt;=1.0.2-&gt;dash) (1.1.0)
+Requirement already satisfied: Jinja2&gt;=2.10.1 in /usr/local/lib/python3.6/dist-packages (from Flask&gt;=1.0.2-&gt;dash) (2.11.1)
+Requirement already satisfied: click&gt;=5.1 in /usr/local/lib/python3.6/dist-packages (from Flask&gt;=1.0.2-&gt;dash) (7.1.1)
+Requirement already satisfied: Werkzeug&gt;=0.15 in /usr/local/lib/python3.6/dist-packages (from Flask&gt;=1.0.2-&gt;dash) (1.0.1)
+Requirement already satisfied: six in /usr/local/lib/python3.6/dist-packages (from plotly-&gt;dash) (1.12.0)
+Requirement already satisfied: retrying&gt;=1.3.3 in /usr/local/lib/python3.6/dist-packages (from plotly-&gt;dash) (1.3.3)
+Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /usr/local/lib/python3.6/dist-packages (from requests-&gt;flask_ngrok) (2.8)
+Requirement already satisfied: urllib3&lt;1.25,&gt;=1.21.1 in /usr/local/lib/python3.6/dist-packages (from requests-&gt;flask_ngrok) (1.24.3)
+Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.6/dist-packages (from requests-&gt;flask_ngrok) (3.0.4)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.6/dist-packages (from requests-&gt;flask_ngrok) (2019.11.28)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in /usr/local/lib/python3.6/dist-packages (from Jinja2&gt;=2.10.1-&gt;Flask&gt;=1.0.2-&gt;dash) (1.1.1)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> assets/typography.css
+<span class="n">body</span> <span class="p">{</span>
+    <span class="n">padding</span><span class="p">:</span> <span class="mi">20</span><span class="n">px</span> <span class="mi">300</span><span class="n">px</span> <span class="mi">0</span><span class="n">px</span> <span class="mi">300</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">margin</span> <span class="p">:</span> <span class="mi">0</span><span class="n">px</span> <span class="mi">0</span><span class="n">px</span> <span class="mi">0</span><span class="n">px</span>  <span class="mi">0</span><span class="n">px</span><span class="p">;</span>
+    <span class="o">/*</span><span class="n">padding</span> <span class="p">:</span> <span class="mi">0</span><span class="n">px</span> <span class="mi">0</span><span class="n">px</span> <span class="mi">0</span><span class="n">px</span> <span class="mi">0</span><span class="n">px</span><span class="p">;</span><span class="o">*/</span>
+    <span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="n">white</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Overwriting assets/typography.css
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">dash</span>
+<span class="kn">import</span> <span class="nn">dash_html_components</span> <span class="k">as</span> <span class="nn">html</span>
+<span class="kn">from</span> <span class="nn">flask_ngrok</span> <span class="k">import</span> <span class="n">run_with_ngrok</span>
+
+<span class="n">external_stylesheets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://codepen.io/chriddyp/pen/bWLwgP.css&#39;</span><span class="p">]</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">dash</span><span class="o">.</span><span class="n">Dash</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">external_stylesheets</span><span class="o">=</span><span class="n">external_stylesheets</span><span class="p">)</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">server</span>
+<span class="n">run_with_ngrok</span><span class="p">(</span><span class="n">server</span><span class="p">)</span> 
+
+<span class="n">app</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span>
+        <span class="p">[</span>   
+            <span class="n">html</span><span class="o">.</span><span class="n">Img</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s1">&#39;/assets/images/fig1.png&#39;</span><span class="p">),</span>
+        <span class="p">]),</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span>
+        <span class="p">[</span>   
+            <span class="n">html</span><span class="o">.</span><span class="n">Img</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s1">&#39;/assets/images/fig2.png&#39;</span><span class="p">),</span>
+        <span class="p">]),</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span>
+        <span class="p">[</span>   
+            <span class="n">html</span><span class="o">.</span><span class="n">Img</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s1">&#39;/assets/images/fig3.png&#39;</span><span class="p">),</span>
+        <span class="p">])</span>
+    <span class="p">],</span><span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;backgroundColor&#39;</span><span class="p">:</span> <span class="s2">&quot;rgb(255,255,255)&quot;</span><span class="p">,</span>  <span class="s2">&quot;margin&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;padding&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">})</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="c1">#app.run_server() #debug=True, host=&quot;0.0.0.0&quot;, port=8900)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> * Serving Flask app &#34;__main__&#34; (lazy loading)
+ * Environment: production
+<span class="ansi-red-fg">   WARNING: This is a development server. Do not use it in a production deployment.</span>
+   Use a production WSGI server instead.
+ * Debug mode: off
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre> * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> * Running on http://b6f41719.ngrok.io
+ * Traffic stats available on http://127.0.0.1:4040
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>127.0.0.1 - - [09/Apr/2020 19:21:09] &#34;<span class="ansi-white-fg">GET / HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:21:09] &#34;<span class="ansi-white-fg">GET /_dash-component-suites/dash_renderer/react@16.v1_3_0m1586459997.13.0.min.js HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:21:09] &#34;<span class="ansi-white-fg">GET /assets/typography.css?m=1586460056.4910946 HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:21:09] &#34;<span class="ansi-white-fg">GET /_dash-component-suites/dash_renderer/polyfill@7.v1_3_0m1586459997.8.7.min.js HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:21:10] &#34;<span class="ansi-white-fg">GET /_dash-component-suites/dash_renderer/react-dom@16.v1_3_0m1586459997.13.0.min.js HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:21:10] &#34;<span class="ansi-white-fg">GET /_dash-component-suites/dash_renderer/prop-types@15.v1_3_0m1586459997.7.2.min.js HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:21:10] &#34;<span class="ansi-white-fg">GET /_dash-component-suites/dash_html_components/dash_html_components.v1_0_3m1586459999.min.js HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:21:10] &#34;<span class="ansi-white-fg">GET /_dash-component-suites/dash_renderer/dash_renderer.v1_3_0m1586459997.min.js HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:21:11] &#34;<span class="ansi-white-fg">GET /_dash-dependencies HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:21:11] &#34;<span class="ansi-white-fg">GET /_dash-layout HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:21:11] &#34;<span class="ansi-white-fg">GET /_favicon.ico?v=1.10.0 HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:21:11] &#34;<span class="ansi-white-fg">GET /assets/images/fig1.png HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:21:11] &#34;<span class="ansi-white-fg">GET /assets/images/fig2.png HTTP/1.1</span>&#34; 200 -
+127.0.0.1 - - [09/Apr/2020 19:21:11] &#34;<span class="ansi-white-fg">GET /assets/images/fig3.png HTTP/1.1</span>&#34; 200 -
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
