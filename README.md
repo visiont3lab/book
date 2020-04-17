@@ -3,7 +3,7 @@
 * [Jupyter book guide](https://jupyterbook.org/guide/)
 
 ```
-jupyter-book create data-visualization --demo
-jupyter-book toc data-visualization/
-jupyter-book build
+jupyter-book create book --demo
+jupyter-book toc book
+jupyter-book build book
 ```
